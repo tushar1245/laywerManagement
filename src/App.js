@@ -34,7 +34,7 @@
 
 
 // App.js
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import store from './state/store';
 
@@ -51,18 +51,12 @@ function App() {
       <Router>
           
           <Routes>
-            <Route exact path='/' element = {<Home/>}>
+            <Route exact path='/' element = {<Home/>}/>
 
-            </Route>
+            
             <Route exact path="/lawyers/:firm/:category" element={<LawyerList />} />
             
 
-            {/* <Route
-              path="/lawyers/:firm/:category"
-              element={({ params }) => (
-                <LawyerList firm={params.firm} selectedCategory={params.category} />
-              )}
-            /> */}
           </Routes>
         
       </Router>

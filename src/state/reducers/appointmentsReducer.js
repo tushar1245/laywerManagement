@@ -59,27 +59,55 @@ const initialState = {
 // };
   
 
-const appointmentsReducer = (state = initialState, action) => {
-  if (action.type === 'BOOK_APPOINTMENT') {
+// const appointmentsReducer = (state = initialState, action) => {
+//   if (action.type === 'BOOK_APPOINTMENT') {
     
-    const lawyerId = action.payload.lawyerId;
-    const updatedLawyers = state.lawyers.map((lawyer) => {
-    if (lawyer.id === lawyerId) {
+//     const lawyerId = action.payload.lawyerId;
+//     const updatedLawyers = state.lawyers.map((lawyer) => {
+//     if (lawyer.id === lawyerId) {
       
-        return {
-          ...lawyer,
-          appointments: [...lawyer.appointments, action.payload],
-        };
-      }
-      return lawyer;
-    });
+//         return {
+//           ...lawyer,
+//           appointments: [...lawyer.appointments, action.payload],
+//         };
+//       }
+//       return lawyer;
+//     });
 
-    return {
-      ...state,
-      lawyers: updatedLawyers,
-    };
-  } else {
-    return state;
+//     return {
+//       ...state,
+//       lawyers: updatedLawyers,
+//     };
+//   } else {
+//     return state;
+//   }
+// };
+
+
+const appointmentsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'ADD_APPOINTMENT':
+      const { lawyerId, day, startTime } = action.payload;
+      const updatedLawyers = state.lawyers.map((lawyer) => {
+        if (lawyer.id === lawyerId) {
+          // Check if the appointment already exists
+          if (!lawyer.appointments[day]) {
+            lawyer.appointments[day] = [];
+          }
+          if (!lawyer.appointments[day].includes(startTime)) {
+            lawyer.appointments[day].push(startTime);
+          }
+        }
+        return lawyer;
+      });
+
+      return {
+        ...state,
+        lawyers: updatedLawyers,
+      };
+
+    default:
+      return state;
   }
 };
 

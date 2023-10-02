@@ -1,7 +1,9 @@
-export const bookAppointment = (appointmentData) => {
+
+
+
+export const bookAppointment = (lawyerId, day, startTime) => {
     return {
-        type: 'BOOK_APPOINTMENT',
-        payload: appointmentData,
+      type: 'ADD_APPOINTMENT',
+      payload: { lawyerId, day, startTime },
     };
 };
-  
