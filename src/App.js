@@ -6,6 +6,7 @@ import store from './state/store';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LawyerList from './components/lawyerList';
 import Home from './components/home';
+import Navbar from './components/navbar';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-          
+          <Navbar />
           <Routes>
             <Route exact path='/' element = {<Home/>}/>
 

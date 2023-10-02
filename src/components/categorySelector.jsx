@@ -1,4 +1,3 @@
-// CategorySelection.js
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -8,7 +7,7 @@ function CategorySelector({ onSelectCategory }) {
   //console.log(lawyers);
   const categories = Array.from(
     new Set(lawyers.flatMap((lawyer) => lawyer.category))
-  ); // Extract unique categories from lawyers
+  ); 
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
