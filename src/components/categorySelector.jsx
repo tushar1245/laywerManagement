@@ -19,8 +19,8 @@ function CategorySelector({ onSelectCategory }) {
   return (
     
     <div>
-      <h2>Select a Category:</h2>
-      <select
+      <h2 className='mt-10 mx-5 font-semibold'>Select a Category of Lawyer that you want:</h2>
+      <select className='mx-5 mt-5 border-slate-900 border-4'
         value={selectedCategory}
         onChange={handleCategoryChange}
       >

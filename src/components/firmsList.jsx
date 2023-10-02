@@ -17,10 +17,10 @@ function FirmsList({ selectedCategory }) {
 
   return (
     <div>
-      <h2>Firms Offering Lawyers in {selectedCategory}:</h2>
+      <h2 className='mx-5 mt-5'>Firms Offering Lawyers in {selectedCategory}:</h2>
       <ul>
         {firms.map((firm) => (
-            <li key={firm}>
+            <li key={firm} className='list-disc text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:ring-blue-300'>
               <Link to={`/lawyers/${firm}/${selectedCategory}`}>
                 {firm}
               </Link>

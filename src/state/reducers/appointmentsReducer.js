@@ -4,7 +4,7 @@ const initialState = {
         id: 1,
         name: 'John Doe',
         category: ['Divorce', 'Criminal'],
-        appointments: [],
+        appointments: {},
         firm: 'Susan & Jane',
         costPerAppointment: 200,
       },
@@ -12,7 +12,7 @@ const initialState = {
         id: 2,
         name: 'Jane Smith',
         category: ['Property', 'Corporate', 'Tax'],
-        appointments: [],
+        appointments: {},
         firm: 'Miller & Partners',
         costPerAppointment: 250,
       },
@@ -20,7 +20,7 @@ const initialState = {
         id: 3,
         name: 'Michael Johnson',
         category: ['Family', 'Personal Injury'],
-        appointments: [],
+        appointments: {},
         firm: 'Brown Attorneys',
         costPerAppointment: 150,
       },
@@ -28,7 +28,7 @@ const initialState = {
         id: 4,
         name: 'Emily Davis',
         category: ['Immigration', 'Estate Planning'],
-        appointments: [],
+        appointments: {},
         firm: 'Anderson & Co',
         costPerAppointment: 300,
       },
@@ -36,7 +36,7 @@ const initialState = {
         id: 5,
         name: 'David Clark',
         category: ['Bankruptcy', 'Tax'],
-        appointments: [],
+        appointments: {},
         firm: 'Parker & Smith',
         costPerAppointment: 500,
       },
@@ -44,44 +44,6 @@ const initialState = {
     ],
 };
 
-
-// const appointmentsReducer = (state = initialState, action) => {
-    
-//     if(action.type === 'BOOK_APPOINTMENT'){
-//         return {
-//             ...state,
-//             appointments: [...state.appointments, action.payload],
-//         };
-//     }else{
-//         return state;
-//     }
-    
-// };
-  
-
-// const appointmentsReducer = (state = initialState, action) => {
-//   if (action.type === 'BOOK_APPOINTMENT') {
-    
-//     const lawyerId = action.payload.lawyerId;
-//     const updatedLawyers = state.lawyers.map((lawyer) => {
-//     if (lawyer.id === lawyerId) {
-      
-//         return {
-//           ...lawyer,
-//           appointments: [...lawyer.appointments, action.payload],
-//         };
-//       }
-//       return lawyer;
-//     });
-
-//     return {
-//       ...state,
-//       lawyers: updatedLawyers,
-//     };
-//   } else {
-//     return state;
-//   }
-// };
 
 
 const appointmentsReducer = (state = initialState, action) => {

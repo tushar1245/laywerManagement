@@ -1,39 +1,3 @@
-// import React, { useState } from 'react';
-// import { Provider } from 'react-redux';
-// import store from './state/store';
-// import CategorySelector from './components/categorySelector';
-// import FirmsList from './components/firmsList';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import LawyerList from './components/lawyerList';
-
-// function App() {
-
-//   const [selectedCategory, setSelectedCategory] = useState('');
-  
-//   const handleCategorySelect = (category) => {
-//     setSelectedCategory(category);
-//   };
-
-//   return (
-//     <Provider store={store}>
-      
-//       <div className="App">
-//         <h1>Lawyer Appointment Management</h1>
-       
-
-//         <CategorySelector onSelectCategory={handleCategorySelect} />
-      
-//         {selectedCategory && <FirmsList selectedCategory={selectedCategory} />}
-        
-//       </div>
-//     </Provider>
-//   );
-// }
-
-// export default App;
-
-
-// App.js
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './state/store';

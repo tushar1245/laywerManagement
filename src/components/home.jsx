@@ -16,7 +16,7 @@ function Home() {
   return (
    
        <>
-          <h1>Lawyer Appointment Management</h1>
+          <h1 className='text-3xl font-bold mt-5'>Lawyer Appointment Management</h1>
           <CategorySelector onSelectCategory={handleCategorySelect} />
           {selectedCategory && <FirmsList selectedCategory={selectedCategory} />}
 

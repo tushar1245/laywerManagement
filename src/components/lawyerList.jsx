@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ReactModal from 'react-modal';
-import { getAvailableTimeSlots } from '../state/selectors/selector';
 import { bookAppointment } from '../state/action-creators';
+import { Button } from '@mui/material';
 
 
 const customStyles = {
@@ -61,25 +61,22 @@ function LawyerList() {
     //   return;
     // }
   
-    // Check if the selected time slot is already in the lawyer's appointments
-    const isTimeSlotTaken = lawyer.appointments.some(
-      (appointment) => appointment.day === day && appointment.startTime === startTime
-    );
-    
-    let isPresent = 0; 
-    for(let dayy in Object.keys(lawyer.appointments)){
-        if(day === dayy && lawyer.appointments[day].includes(startTime)){
-            isPresent = 1;
-            break;
-        }
-    }
+    let isPresent = false;
+    Object.keys(lawyer.appointments).forEach(key => {
+      console.log(key,lawyer.appointments[key])
+      if(day === key && lawyer.appointments[key].includes(startTime)){
+        isPresent = true;
+      }
+    })
   
     if (isPresent) {
       console.log('aaya');
       window.alert('This time slot is already taken. Please choose a different one.');
     } else {
       // If the time slot is not taken, dispatch the action to add the appointment
+
       dispatch(bookAppointment(selectedLawyer, day, startTime));
+      window.alert('Booking Successfull');
     }
   
     setSelectedLaywer(null);
@@ -88,24 +85,16 @@ function LawyerList() {
 
 
 
-//   const handleSubmit = (day, startTime) => {
-//     // Handle form submission here
-//     console.log('Selected Date:', selectedDate);
-//     console.log('Selected Time:', selectedTime);
-//     dispatch(bookAppointment(selectedLawyer, day, startTime) );
-//     setSelectedLaywer(null);
-//   };
-
   return (  
     
     
     <div>
     {/* {console.log(selectedLawyer)}; */}
 
-      <h2>Lawyers from {firm} in {category} category:</h2>
+      <h2 >Lawyers from {firm} in {category} category:</h2>
       <ul>
         {filteredLawyers.map((lawyer) => (
-        <div key = {lawyer.id}> 
+        <div  key = {lawyer.id} className=''> 
           <li key={lawyer.id}>{lawyer.name}</li>
           <button onClick={() => setSelectedLaywer(lawyer.id)}> Set Appointment</button>
         </div>
@@ -151,21 +140,13 @@ function LawyerList() {
     })}
   </select>
 
-            {/* <select value={selectedTime} onChange={handleTimeChange}>
-              <option value="">Select a time</option>
-              {getAvailableTimeSlots.map((daySlots) => (
-                daySlots.slots.map((slot) => (
-                  <option key={slot} value={slot}>
-                    {slot}
-                  </option>
-                ))
-              ))}
-            </select> */}
+            
   
   
           </label>
           <br />
-          <button type="submit" onClick={() => handleSubmit(selectedDate, selectedTime)}>Submit</button>
+          <Button variant="contained" type="submit" onClick={() => handleSubmit(selectedDate, selectedTime)} >Submit</Button>
+          {/* <button type="submit" onClick={() => handleSubmit(selectedDate, selectedTime)}>Submit</button> */}
         </form>
 
         
